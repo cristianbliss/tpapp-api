@@ -1,0 +1,294 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "chanel-aftersales-backend",
+    "version": "1.0.0"
+  },
+  "components": {
+    "securitySchemes": {
+      "Authorization": {
+        "type": "apiKey",
+        "description": "Insert here your API Key",
+        "name": "Authorization",
+        "in": "header"
+      }
+    },
+    "schemas": {}
+  },
+  "paths": {
+    "/getStore": {
+      "get": {
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "uid": {
+                          "type": "string"
+                        },
+                        "store": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string"
+                            },
+                            "contact": {
+                              "type": "string"
+                            },
+                            "location": {
+                              "type": "object",
+                              "properties": {
+                                "latitude": {
+                                  "type": "number"
+                                },
+                                "longitude": {
+                                  "type": "number"
+                                }
+                              },
+                              "required": [
+                                "latitude",
+                                "longitude"
+                              ],
+                              "additionalProperties": false
+                            },
+                            "additionalInfo": {
+                              "type": "string"
+                            },
+                            "tpa": {
+                              "type": "boolean"
+                            },
+                            "mb": {
+                              "type": "boolean"
+                            },
+                            "acquirer": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "notes": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "location",
+                            "tpa",
+                            "mb"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "uid",
+                        "store"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/addStore": {
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "store": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "contact": {
+                        "type": "string"
+                      },
+                      "location": {
+                        "type": "object",
+                        "properties": {
+                          "latitude": {
+                            "type": "number"
+                          },
+                          "longitude": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "latitude",
+                          "longitude"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "additionalInfo": {
+                        "type": "string"
+                      },
+                      "tpa": {
+                        "type": "boolean"
+                      },
+                      "mb": {
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
+                      "acquirer": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "notes": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "location",
+                      "tpa",
+                      "mb"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "store"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getStores": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "uid": {
+                        "type": "string"
+                      },
+                      "store": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "contact": {
+                            "type": "string"
+                          },
+                          "location": {
+                            "type": "object",
+                            "properties": {
+                              "latitude": {
+                                "type": "number"
+                              },
+                              "longitude": {
+                                "type": "number"
+                              }
+                            },
+                            "additionalProperties": false
+                          },
+                          "additionalInfo": {
+                            "type": "string"
+                          },
+                          "tpa": {
+                            "type": "boolean"
+                          },
+                          "mb": {
+                            "type": "boolean"
+                          },
+                          "acquirer": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "notes": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

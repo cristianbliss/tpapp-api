@@ -1,0 +1,9 @@
+node_modules  
+.env
+.vscode
+dist
+yarn.lock
+package-lock.json
+seeds.ts
+logs
+temp/*

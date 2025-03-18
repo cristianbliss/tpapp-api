@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "module": "commonjs",
+    "target": "ES2021",
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": false,
+  },
+  "include": [
+    "./src/**/*",
+    "tsconfig.json"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
