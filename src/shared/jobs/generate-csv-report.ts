@@ -10,6 +10,7 @@ const task = new AsyncTask("generate-csv-report", async (taskId) => {
     );
     await makeGenerateCsvReport().execute();
   } catch (e) {
+    console.log(e);
     console.log(
       `something went wrong while try execute job generate csv report ${taskId}`
     );

@@ -8,11 +8,11 @@ export const AddStoreController = async (
   request: FastifyRequest<{ Body: AddStoreBody }>,
   response: FastifyReply
 ) => {
-  const { store } = request?.body;
+  const store = request?.body;
 
   try {
     if (!store) throw new RequestError();
-    const useCase = await makeAddStore().create({ store });
+    const useCase = await makeAddStore().create({ ...store });
 
     return response.status(statusCode.OK).send(useCase);
   } catch (e) {
@@ -21,19 +21,17 @@ export const AddStoreController = async (
 };
 
 export type AddStoreBody = {
-  store: {
-    name: string;
-    contact?: string;
-    location: {
-      latitude: number;
-      longitude: number;
-    };
-    additionalInfo?: string;
-    tpa: boolean;
-    mb: boolean | null;
-    acquirer?: string[];
-    notes?: string;
+  name: string;
+  contact?: string;
+  location: {
+    latitude: number;
+    longitude: number;
   };
+  additionalInfo?: string;
+  tpa: boolean;
+  mb: boolean | null;
+  acquirer?: string[];
+  notes?: string;
 };
 
 export type AddStoreResponse = { id: string };
