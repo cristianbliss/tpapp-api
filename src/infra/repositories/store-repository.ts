@@ -15,6 +15,7 @@ export class StoreRepository {
     const stores = await getDocs(collection(db, resourses.STORES_COLLECTION));
     stores.docs.forEach((item) => {
       const data = item.data();
+
       if (data) {
         storesResult.push({ ...data, id: item.id });
       }
@@ -59,19 +60,18 @@ export namespace StoreRepository {
   export type GetStoresResult = Store[];
   export type Store = {
     uid: string;
-    store: {
-      name: string;
-      contact?: string;
-      location: {
-        latitude: number;
-        longitude: number;
-      };
-      additionalInfo?: string;
-      tpa: boolean;
-      mb: boolean | null;
-      acquirer?: string[];
-      notes?: string;
+    id: string;
+    name: string;
+    contact?: string;
+    location: {
+      latitude: number;
+      longitude: number;
     };
+    additionalInfo?: string;
+    tpa: boolean;
+    mb: boolean | null;
+    acquirer?: string[];
+    notes?: string;
   };
 
   export type GetStoreResult = Store;

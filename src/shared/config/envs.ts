@@ -16,8 +16,13 @@ export const envs = {
   AD: {
     JWKS_URI: process.env?.AD_AZURE_JWKS_URI,
   },
-  SENDGRID: {
+  EMAIL_SENDER: {
     REPORT_EMAIL: process.env.REPORT_EMAIL,
+    EMAIL_SENDER_PASSWORD: process.env.EMAIL_SENDER_PASSWORD,
+    EMAIL_SENDER_USER: process.env.EMAIL_SENDER_USER,
+    EMAIL_SENDER_SERVICE: process.env.EMAIL_SENDER_SERVICE,
+    EMAIL_SENDER_HOST: process.env.EMAIL_SENDER_HOST,
+    EMAIL_SENDER_PORT: process.env.EMAIL_SENDER_PORT,
   },
   FIREBASE: {
     API_KEY: process.env.FIREBASE_API_KEY,
